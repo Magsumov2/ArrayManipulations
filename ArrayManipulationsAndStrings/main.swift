@@ -98,7 +98,7 @@ class LinkedListCollection{
     }
     
     
-    func map(by mapedValue:  (Int)->Int)->LinkedListCollection{
+    func map(by mapedValue:(Int)->Int)->LinkedListCollection{
         let anInstance = LinkedListCollection()
         var curent = start
         while curent != nil{
@@ -299,9 +299,86 @@ class LinkedList2{
             }
         }
     }
-    
-   
-    
+}
+class ArrayManipulations{
+    func bubleSort(){
+        var array = [1,2,3,1,2,4,5,77,76]
+        var i = 0
+        while i < array.count{
+            var buf = 0
+            var j = 0
+            while j < array.count-1{
+                if array[j]>array[i]{
+                    buf = array[j]
+                    array[j] = array[i]
+                    array[i] = buf
+                }
+                j+=1
+            }
+            i+=1
+        }
+        print(array)
+    }
+    func chosenSortMax(){
+        var nums = [1,2,3,1,2,4,100,2,5,6,10,357890,4,5,77,76]
+        var size = nums.count-1
+        while size > 1{
+            var buf  = 0
+            var maxI = 0
+            var i = 0
+            while i < size{
+                if nums[i] > nums[i+1]{
+                    maxI = i
+                }
+                if  nums[maxI] > nums[size]{
+                    buf = nums[size]
+                    nums[size] = nums[maxI]
+                    nums[maxI] = buf
+                }
+                i+=1
+            }
+            size-=1
+        }
+        print(nums)
+        
+    }
+    func chosenSortMin(){
+        var nums = [1,2,3,1,2,4,100,2,5,6,10,357890,4,5,77,76]
+        var buf = 0
+        var i = 0
+        while i < nums.count{
+            var minI = i
+            var j = i
+            while j < nums.count{
+                if nums[j] < nums[minI]{
+                    minI = j
+                }
+                j+=1
+            }
+            buf = nums[i]
+            nums[i] = nums[minI]
+            nums[minI] = buf
+            i+=1
+        }
+        print(nums)
+        
+    }
+    func insertionSort(){
+        var nums = [1,2,3,1,2,4,100,2,5,6,10,357890,4,5,77,76]
+        var buf = 0
+        var i = 1
+        while i < nums.count{
+            var j = i
+            while j > 0 && nums[j-1] > nums[j]{
+                buf = nums[j-1]
+                nums[j-1] = nums[j]
+                nums[j] = buf
+                j-=1
+            }
+            i+=1
+        }
+        print(nums)
+    }
 }
 
 
@@ -327,8 +404,11 @@ lic.add(num: 3)
 lic.add(num: 1)
 
 lic.myPrint()
-let r = lic.distinct()
-r.myPrint()
+let am = ArrayManipulations()
+am.chosenSortMax()
+am.chosenSortMin()
+am.insertionSort()
+
 
 
 
